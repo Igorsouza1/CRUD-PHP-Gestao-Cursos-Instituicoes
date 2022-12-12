@@ -58,7 +58,7 @@
     <div class="container">
       <div class="row">
       <div class="col-12 section-services">
-          <h1 class="display-3">Editar Área</h1>
+          <h1 class="display-3">Editar Curso</h1>
           <form method="POST" action="./service/curso/cursoSalvarEdit.php">
             <div class="form-row">
                 <div class="form-group col-md-12">

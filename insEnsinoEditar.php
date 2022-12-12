@@ -57,11 +57,11 @@
     <div class="container">
       <div class="row">
       <div class="col-12 section-services">
-          <h1 class="display-3">Editar Área</h1>
+          <h1 class="display-3">Editar Instituição</h1>
           <form method="POST" action="./service/insEnsino/insEnsinoSalvarEdit.php">
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label for="nomeArea">Curso</label>
+                    <label for="nomeArea">Nome da Instituição</label>
                     <input type="hidden" value=<?php echo $id;?> type="text" class="form-control m-2" name="ID" id="ID" >
                     <input value=<?php echo $nome;?> type="text" class="form-control m-2" name="Nome" id="Nome " >
                     <input value=<?php echo $cnpj;?> type="number" class="form-control m-2" name="CNPJ" id="CNPJ" >

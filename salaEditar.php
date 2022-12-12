@@ -4,26 +4,27 @@
       if(!empty($_GET['ID']))
       {
         $id = $_GET['ID'];
-        $sqlSelect = "SELECT * FROM turma WHERE id=$id";
+        $sqlSelect = "SELECT * FROM sala WHERE id=$id";
         $result = $mysqli->query($sqlSelect);
         if($result->num_rows > 0)
         {
-            while($turma = mysqli_fetch_assoc($result))
+            while($sala = mysqli_fetch_assoc($result))
             {
-                $id = $turma['ID'];
-                $cursoID = $turma['curso_ID'];
-                $nAlunos = $turma['N_Alunos'];
+                $id = $sala['ID'];
+                $vagas = $sala['Vagas'];
+                $cursoID = $sala['curso_ID'];
+                $turmaID = $sala['turma_ID'];
 
             }
         }
         else
         {
-            header('Location: curso.php');
+            header('Location: sala.php');
         }
     }
     else
     {
-        header('Location: curso.php');
+        header('Location: sala.php');
     }
 ?>
 
@@ -57,19 +58,29 @@
     <div class="container">
       <div class="row">
       <div class="col-12 section-services">
-          <h1 class="display-3">Editar Turma</h1>
-          <form method="POST" action="./service/turma/turmaSalvarEdit.php">
+          <h1 class="display-3">Editar Sala</h1>
+          <form method="POST" action="./service/sala/salaSalvarEdit.php">
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label for="nomeArea">Nº Alunos</label>
+                    <label for="nomeArea">Sala</label>
                     <input type="hidden" value=<?php echo $id;?> type="text" class="form-control m-2" name="ID" id="ID" >
-                    <input value=<?php echo $nAlunos;?> type="number" class="form-control m-2" name="N_Alunos" id="N_Alunos " >
+                    <input value=<?php echo $vagas;?> type="number" class="form-control m-2" name="vagas" id="vagas  " >
                     <select name="curso_ID" id="curso_ID" class="form-control">
                     <?php
                     $query = mysqli_query($mysqli, "SELECT * FROM curso");
                                 foreach($query as $option){
                                   ?>
                                     <option value="<?php echo $option["ID"] ?>"><?php echo $option['Nome'] ?></option>
+                                  <?php
+                                }
+                    ?>
+                    </select>
+                    <select name="turma_ID" id="turma_ID" class="form-control">
+                    <?php
+                    $query = mysqli_query($mysqli, "SELECT * FROM turma");
+                                foreach($query as $option){
+                                  ?>
+                                    <option value="<?php echo $option["ID"] ?>">ID:<?php echo $option["ID"] ?> - Nº Alunos:<?php echo $option['N_Alunos'] ?></option>
                                   <?php
                                 }
                     ?>
